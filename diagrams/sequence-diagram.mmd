@@ -1,0 +1,33 @@
+sequenceDiagram
+
+main ->> foodTruck: show me food truck options and purchases
+foodTruck -->> main: ok
+
+foodTruck ->> vegetables: give me vegetable options
+vegetables -->> foodTruck: here are veg radio buttons
+
+
+foodTruck ->> sides: give me sides options
+sides -->> foodTruck: here are sides radio buttons
+
+
+foodTruck ->> entrees: give me entree options
+entrees -->> foodTruck: here are entree radio buttons
+
+
+vegetables -->> transientState: store user veg option
+sides -->> transientState: store user side option
+entrees -->> transientState: store user entree option
+
+sales ->> purchaseButton: show me all purchases
+purchaseButton -->> sales: ok
+
+foodTruck ->> sales: show me all sales HTML
+sales -->> foodTruck: ok
+
+purchaseButton ->> transientState: store purchase permanently
+transientState ->> API: here is user purchase
+
+
+
+
