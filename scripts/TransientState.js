@@ -28,6 +28,7 @@ export const setVegetable = (chosenVegetable) => {
 }
 
 export const saveOrders = async () => {
+    if (transientState.entreeId != 0 && transientState.sideId != 0 && transientState.vegetableId != 0) {
     const postChoices = {
         method: "POST",
         headers: {
@@ -37,15 +38,15 @@ export const saveOrders = async () => {
         body: JSON.stringify(transientState)
     }
 
-    transientState.entreeId = 0
-    transientState.sideId = 0
-    transientState.vegetableId = 0
-    console.log(transientState)
-
     const response = await fetch("http://localhost:8088/purchases", postChoices)
 
     const newSubmissionEvent = new CustomEvent("newSubmissionCreated")
 
     document.dispatchEvent(newSubmissionEvent)
+    }
+    transientState.entreeId = 0
+    transientState.sideId = 0
+    transientState.vegetableId = 0
+    console.log(transientState)
 
 }
