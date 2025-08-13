@@ -56,10 +56,10 @@ sequenceDiagram
 > 🧨 Before you click the "Assessment Complete" button on the Learning Platform, add your answers below for each question and make a commit. It is your option to request a face-to-face meeting with a coach for a vocabulary review.
 
 1. Should transient state be represented in a database diagram? Why, or why not?
-   > Your answer here
+   > No because the diagram represents the relationship between the properties of each table. The transient state is a version of one of the represented tables, but it is not itself a new table that needs to be represented.
 2. In the **FoodTruck** module, you are **await**ing the invocataion of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
-   > Your answer here
+   > The `await` keyword is needed since the component functions are awaiting a response from the server to execute the function. The `await` keyword is needed when you invoke the function so that the promise is fulfilled before the function runs. If you remove this keyword and invoke the function, the promise will not be fulfilled and you will likely see a message like "awaiting promise" or similar on the DOM if the function was being used to render HTML.
 3. When the user is making choices by selecting radio buttons, explain how that data is retained so that the **Purchase Combo** button works correctly.
-   > Your answer here
+   > The user selection for each component is being temporarily stored in the transientState object by using an event handler function in each component module. Once a selection is made for each component and the button is clicked, an event listener/handler in the button module causes a POST method to run, saving the transientState object to the API which means the data has been stored permanently. 
 4. You used the `map()` array method in the self assessment _(at least, you should have since it is a learning objective)_. Explain why that function is helpful as a replacement for a `for..of` loop.
-   > Your answer here
+   > The `map()` method allows you to change each item in an array and add it to a new array. Since the data being mapped still exists and has not been changed by the `map()` method as it would with a loop, you can expand the foreign key data to use the fk object properties to display additional information, such as the total price of the order. 
