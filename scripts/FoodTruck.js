@@ -1,7 +1,18 @@
+import { entreeOptions } from "./Entrees.js"
+import { sideOptions } from "./SideDishes.js"
 import { Sales } from "./Sales.js"
+import { vegetableOptions } from "./Vegetables.js"
+import { PurchaseButton } from "./PurchaseButton.js"
+// import entrees, sides, veg
 
-export const FoodTruck = () => {
-    const salesHTML = Sales()
+//create section to display food options
+
+export const FoodTruck = async () => {
+    const salesHTML = await Sales()
+    const entreesHTML = await entreeOptions()
+    const sidesHTML = await sideOptions()
+    const vegetableHTML = await vegetableOptions()
+    const button = PurchaseButton()
 
     return `
         <header class="header">
@@ -10,7 +21,13 @@ export const FoodTruck = () => {
         </header>
 
         <article>
-            <button id="purchase">Purchase Combo</button>
+            ${entreesHTML}
+            ${sidesHTML}
+            ${vegetableHTML}
+        </article>
+
+        <article>
+            ${button}
         </article>
 
         <article class="customerOrders">
